@@ -1,0 +1,6 @@
+{
+  "name": "DiggyDiggy Gold",
+  "description": "An interactive, satisfying gold mining simulator with passive income, a golden refinery, and collectible tools and trophies.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,250 @@
+{
+  "users": {
+    "guest_1786954800167_q2foxjbc": {
+      "id": "guest_1786954800167_q2foxjbc",
+      "username": "Gold Miner",
+      "nuggets": 117,
+      "gems": 10,
+      "availableNuggets": 117,
+      "pendingNuggets": 0,
+      "level": 1,
+      "miningPower": 1,
+      "totalTaps": 32,
+      "createdAt": "2026-08-17T08:20:01.849Z",
+      "lastActiveAt": "2026-08-17T08:29:45.303Z"
+    },
+    "guest_1786955438227_b14jmwf0": {
+      "id": "guest_1786955438227_b14jmwf0",
+      "username": "Gold Miner",
+      "nuggets": 117,
+      "gems": 10,
+      "availableNuggets": 117,
+      "pendingNuggets": 0,
+      "level": 1,
+      "miningPower": 1,
+      "totalTaps": 32,
+      "createdAt": "2026-08-17T08:30:38.343Z",
+      "lastActiveAt": "2026-08-17T08:31:23.387Z"
+    },
+    "guest_1786955541066_0rmdmaa4": {
+      "id": "guest_1786955541066_0rmdmaa4",
+      "username": "Gold Miner",
+      "nuggets": 117,
+      "gems": 10,
+      "availableNuggets": 117,
+      "pendingNuggets": 0,
+      "level": 1,
+      "miningPower": 1,
+      "totalTaps": 32,
+      "createdAt": "2026-08-17T08:32:21.124Z",
+      "lastActiveAt": "2026-08-17T08:33:06.235Z"
+    },
+    "guest_1786955860884_5keia1el": {
+      "id": "guest_1786955860884_5keia1el",
+      "username": "Gold Miner",
+      "nuggets": 323,
+      "gems": 10,
+      "availableNuggets": 323,
+      "pendingNuggets": 0,
+      "level": 2,
+      "miningPower": 1,
+      "totalTaps": 95,
+      "createdAt": "2026-08-17T08:37:42.298Z",
+      "lastActiveAt": "2026-08-17T08:45:31.083Z"
+    },
+    "guest_1786956336286_30xq7jtm": {
+      "id": "guest_1786956336286_30xq7jtm",
+      "username": "Gold Miner",
+      "nuggets": 530,
+      "gems": 10,
+      "availableNuggets": 530,
+      "pendingNuggets": 0,
+      "level": 2,
+      "miningPower": 1,
+      "totalTaps": 194,
+      "createdAt": "2026-08-17T08:45:36.340Z",
+      "lastActiveAt": "2026-08-17T08:50:51.777Z"
+    },
+    "guest_1786956879040_c8z59kgp": {
+      "id": "guest_1786956879040_c8z59kgp",
+      "username": "Gold Miner",
+      "nuggets": 303,
+      "gems": 11,
+      "availableNuggets": 153,
+      "pendingNuggets": 0,
+      "level": 1,
+      "miningPower": 1,
+      "totalTaps": 59,
+      "createdAt": "2026-08-17T08:54:40.714Z",
+      "lastActiveAt": "2026-08-17T09:02:54.107Z"
+    },
+    "guest_1786957388324_1edc4176": {
+      "id": "guest_1786957388324_1edc4176",
+      "username": "Gold Miner",
+      "nuggets": 303,
+      "gems": 11,
+      "availableNuggets": 153,
+      "pendingNuggets": 0,
+      "level": 1,
+      "miningPower": 1,
+      "totalTaps": 59,
+      "createdAt": "2026-08-17T09:03:08.382Z",
+      "lastActiveAt": "2026-08-17T09:03:08.382Z"
+    },
+    "guest_1786957405464_ryz0qq8x": {
+      "id": "guest_1786957405464_ryz0qq8x",
+      "username": "Gold Miner",
+      "nuggets": 303,
+      "gems": 11,
+      "availableNuggets": 153,
+      "pendingNuggets": 0,
+      "level": 1,
+      "miningPower": 1,
+      "totalTaps": 59,
+      "createdAt": "2026-08-17T09:03:25.516Z",
+      "lastActiveAt": "2026-08-17T09:03:25.516Z"
+    },
+    "guest_1786957414471_ho4bml4y": {
+      "id": "guest_1786957414471_ho4bml4y",
+      "username": "Gold Miner",
+      "nuggets": 303,
+      "gems": 11,
+      "availableNuggets": 153,
+      "pendingNuggets": 0,
+      "level": 1,
+      "miningPower": 1,
+      "totalTaps": 59,
+      "createdAt": "2026-08-17T09:03:34.523Z",
+      "lastActiveAt": "2026-08-17T09:05:49.519Z"
+    },
+    "guest_1786957561776_rxelo85c": {
+      "id": "guest_1786957561776_rxelo85c",
+      "username": "Gold Miner",
+      "nuggets": 303,
+      "gems": 11,
+      "availableNuggets": 153,
+      "pendingNuggets": 0,
+      "level": 1,
+      "miningPower": 1,
+      "totalTaps": 59,
+      "createdAt": "2026-08-17T09:06:01.824Z",
+      "lastActiveAt": "2026-08-17T09:23:16.827Z"
+    },
+    "guest_1786959026779_l9ft70a8": {
+      "id": "guest_1786959026779_l9ft70a8",
+      "username": "Gold Miner",
+      "nuggets": 303,
+      "gems": 11,
+      "availableNuggets": 153,
+      "pendingNuggets": 0,
+      "level": 1,
+      "miningPower": 1,
+      "totalTaps": 59,
+      "createdAt": "2026-08-17T09:30:27.680Z",
+      "lastActiveAt": "2026-08-17T09:30:27.680Z"
+    }
+  },
+  "transactions": [],
+  "rateLimits": {
+    "::1": {
+      "identifier": "::1",
+      "requestCount": 2,
+      "windowStart": "2026-08-17T09:30:27.667Z",
+      "isBlocked": false,
+      "blockedUntil": null,
+      "blockReason": null
+    }
+  },
+  "leaderboard": {
+    "2026-W34": {
+      "guest_1786954800167_q2foxjbc": {
+        "userId": "guest_1786954800167_q2foxjbc",
+        "nickname": "CleverBadger3227",
+        "weeklyGold": 117,
+        "trophyCount": 0,
+        "level": 1,
+        "updatedAt": "2026-08-17T08:29:45.330Z"
+      },
+      "guest_1786955438227_b14jmwf0": {
+        "userId": "guest_1786955438227_b14jmwf0",
+        "nickname": "BraveOwl3116",
+        "weeklyGold": 117,
+        "trophyCount": 0,
+        "level": 1,
+        "updatedAt": "2026-08-17T08:31:23.419Z"
+      },
+      "guest_1786955541066_0rmdmaa4": {
+        "userId": "guest_1786955541066_0rmdmaa4",
+        "nickname": "SparklyMole3155",
+        "weeklyGold": 117,
+        "trophyCount": 0,
+        "level": 1,
+        "updatedAt": "2026-08-17T08:33:06.267Z"
+      },
+      "guest_1786955860884_5keia1el": {
+        "userId": "guest_1786955860884_5keia1el",
+        "nickname": "GoldenBadger3162",
+        "weeklyGold": 323,
+        "trophyCount": 0,
+        "level": 2,
+        "updatedAt": "2026-08-17T08:45:31.111Z"
+      },
+      "guest_1786956336286_30xq7jtm": {
+        "userId": "guest_1786956336286_30xq7jtm",
+        "nickname": "MightyMole3154",
+        "weeklyGold": 530,
+        "trophyCount": 0,
+        "level": 2,
+        "updatedAt": "2026-08-17T08:50:51.823Z"
+      },
+      "guest_1786956879040_c8z59kgp": {
+        "userId": "guest_1786956879040_c8z59kgp",
+        "nickname": "SparklyTiger3145",
+        "weeklyGold": 303,
+        "trophyCount": 0,
+        "level": 1,
+        "updatedAt": "2026-08-17T09:02:54.127Z"
+      },
+      "guest_1786957388324_1edc4176": {
+        "userId": "guest_1786957388324_1edc4176",
+        "nickname": "BravePanda2996",
+        "weeklyGold": 303,
+        "trophyCount": 0,
+        "level": 1,
+        "updatedAt": "2026-08-17T09:03:08.398Z"
+      },
+      "guest_1786957405464_ryz0qq8x": {
+        "userId": "guest_1786957405464_ryz0qq8x",
+        "nickname": "ShinySquirrel3239",
+        "weeklyGold": 303,
+        "trophyCount": 0,
+        "level": 1,
+        "updatedAt": "2026-08-17T09:03:25.526Z"
+      },
+      "guest_1786957414471_ho4bml4y": {
+        "userId": "guest_1786957414471_ho4bml4y",
+        "nickname": "SparklyOwl3185",
+        "weeklyGold": 303,
+        "trophyCount": 0,
+        "level": 1,
+        "updatedAt": "2026-08-17T09:05:49.529Z"
+      },
+      "guest_1786957561776_rxelo85c": {
+        "userId": "guest_1786957561776_rxelo85c",
+        "nickname": "TinyOtter3203",
+        "weeklyGold": 303,
+        "trophyCount": 0,
+        "level": 1,
+        "updatedAt": "2026-08-17T09:23:16.838Z"
+      },
+      "guest_1786959026779_l9ft70a8": {
+        "userId": "guest_1786959026779_l9ft70a8",
+        "nickname": "LuckyMole3081",
+        "weeklyGold": 303,
+        "trophyCount": 0,
+        "level": 1,
+        "updatedAt": "2026-08-17T09:30:27.668Z"
+      }
+    }
+  }
+}

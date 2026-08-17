@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+/* Fonts — ui-ux-pro-max design-system query "kids playful idle game mining"
+   returned pairing "Baloo 2 / Comic Neue", explicitly tagged
+   "Best For: Children's apps, educational games, kid-friendly content".
+   Baloo 2 (heavy, rounded) replaces the old condensed poster font Anton for
+   display/numbers; Comic Neue (rounded, friendly) replaces Inter for body
+   text on adult-facing surfaces (Settings, Store). */
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Comic+Neue:wght@400;700&display=swap');
+
+@theme {
+  --font-display: "Baloo 2", sans-serif;
+  --font-sans: "Comic Neue", sans-serif;
+
+  /* Design tokens from ui-ux-pro-max design-system query
+     "kids playful idle game mining" (style: Vibrant and Block-based;
+     notes: "Coin gold + prestige purple"). Tailwind v4 auto-generates
+     bg, text, border and ring utilities from every color var below. */
+  --color-bg: #FFFBEB;           /* warm cream page background */
+  --color-surface: #FFFFFF;      /* card surfaces */
+  --color-surface-muted: #FDF1D9; /* locked/inactive surface tint */
+  --color-ink: #0F172A;          /* deep tone: borders, headline text */
+  --color-ink-soft: #475569;     /* muted foreground, adult-surface copy */
+  --color-primary: #D97706;      /* THE single accent for gameplay actions */
+  --color-primary-soft: #FBBF24; /* lighter gold, chips/badges/highlights */
+  --color-on-primary: #1C1300;
+  --color-accent: #7C3AED;       /* reserved: prestige + gem/premium actions only */
+  --color-accent-soft: #C4B5FD;
+  --color-on-accent: #FFFFFF;
+  --color-success: #059669;
+  --color-danger: #DC2626;       /* errors/locked feedback only, never a button fill */
+}
+
+body {
+  font-family: 'Comic Neue', sans-serif;
+  background-color: var(--color-bg);
+}
+
+.font-display {
+  font-family: 'Baloo 2', sans-serif;
+  line-height: 1;
+}
+
+/* Block-based system: thick dark outline + hard offset shadow, kept per
+   kid-game-ui ("extend, don't replace" a neobrutalist base) but modernized —
+   ink-colored instead of pure black, paired everywhere with a rounded-*
+   utility on the element itself for the softer "block" look the
+   Vibrant & Block-based style calls for. */
+.brutal-border {
+  border: 3px solid var(--color-ink);
+}
+
+.brutal-border-2 {
+  border: 2px solid var(--color-ink);
+}
+
+.brutal-shadow {
+  box-shadow: 5px 5px 0px 0px var(--color-ink);
+}
+
+.brutal-shadow-sm {
+  box-shadow: 3px 3px 0px 0px var(--color-ink);
+}
+
+.brutal-shadow-lg {
+  box-shadow: 8px 8px 0px 0px var(--color-ink);
+}
+
+.interactive-card {
+  transition: all 0.15s ease;
+}
+
+.interactive-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0px 0px var(--color-ink);
+}
+
+.interactive-card:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0px 0px var(--color-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+/* ux domain query "modal single action reward" flagged missing focus rings
+   as High severity — apply one visible focus-visible ring globally instead
+   of hand-editing every button's className. */
+button:focus-visible,
+a:focus-visible,
+[role='button']:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Custom marquee animations */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
