@@ -18,3 +18,7 @@ View your app in AI Studio: https://ai.studio/apps/7d58fd48-11e8-45de-9e01-ae012
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
+
+## Free Companion Tools
+
+- [Idle Game Offline Earnings Calculator](https://sadiyaqeen92639572-cloud.github.io/idle-game-offline-earnings-calculator/) — figure out how much gold your idle miner earned while you were away, using the same capped-rate formula DiggyDiggy Gold itself uses. Play the live game at [goldmininggame.com](https://goldmininggame.com).
