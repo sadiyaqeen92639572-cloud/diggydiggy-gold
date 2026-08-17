@@ -2,6 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { checkRateLimit, getIPFromRequest } from '@/lib/rate-limit';
 
+// Required by @cloudflare/next-on-pages — this route reads a D1 binding via
+// getRequestContext(), which is only available under the edge runtime.
+export const runtime = 'edge';
+
 // POST: Synchronize game state
 export async function POST(request: NextRequest) {
   try {
@@ -16,7 +20,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const body = await request.json();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const body = (await request.json()) as any;
     const {
       userId,
       username,

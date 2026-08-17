@@ -3,6 +3,10 @@ import { db } from '@/lib/db';
 import { checkRateLimit, getIPFromRequest } from '@/lib/rate-limit';
 import { getISOWeekKey } from '@/lib/leaderboard-utils';
 
+// Required by @cloudflare/next-on-pages — this route reads a D1 binding via
+// getRequestContext(), which is only available under the edge runtime.
+export const runtime = 'edge';
+
 // POST: Submit/update this week's score
 export async function POST(request: NextRequest) {
   try {
@@ -12,7 +16,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Leaderboard rate limit exceeded.' }, { status: 429 });
     }
 
-    const body = await request.json();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const body = (await request.json()) as any;
     const { userId, nickname, weeklyGold, trophyCount, level } = body;
 
     if (!userId || !nickname) {

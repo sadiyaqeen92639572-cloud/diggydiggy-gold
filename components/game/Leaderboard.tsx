@@ -27,7 +27,7 @@ export function Leaderboard() {
       try {
         const res = await fetch(`/api/leaderboard?userId=${encodeURIComponent(user.id!)}`);
         if (!res.ok) throw new Error('bad response');
-        const data = await res.json();
+        const data = (await res.json()) as { top?: typeof top; personalRank?: number | null };
         if (cancelled) return;
         setTop(data.top || []);
         setPersonalRank(data.personalRank ?? null);
