@@ -14,7 +14,11 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   icons: {
-    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png' }],
   },
   openGraph: {
     title: TITLE,
@@ -35,6 +39,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
     googleBot: { index: true, follow: true },
+  },
+  verification: {
+    google: '5i4qQ2_EIt1rcvIahDtG7sC6EwSmS88iXksJ5V5S2e4',
   },
 };
 
