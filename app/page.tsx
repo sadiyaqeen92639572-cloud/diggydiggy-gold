@@ -20,8 +20,14 @@ import { generateSafeNickname } from '@/lib/leaderboard-utils';
 import { SettingsSheet } from '@/components/game/SettingsSheet';
 import { Settings } from 'lucide-react';
 import Link from 'next/link';
+import { PerfProbe } from '@/components/dev/PerfProbe';
 
 export default function GamePage() {
+  // Temporary: diagnostic for the intermittent freeze, only active with ?perf=1.
+  const [perfProbe, setPerfProbe] = useState(false);
+  useEffect(() => {
+    setPerfProbe(new URLSearchParams(window.location.search).has('perf'));
+  }, []);
   const {
     user,
     processPassiveIncome,
@@ -99,6 +105,7 @@ export default function GamePage() {
 
   return (
     <main className="min-h-screen text-ink bg-bg relative flex flex-col overflow-x-hidden font-sans pb-28" id="app-shell">
+      {perfProbe && <PerfProbe />}
 
       {/* Dynamic Animated background ambient dust particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">

@@ -6,6 +6,40 @@ import { getISOWeekKey } from '@/lib/leaderboard-utils';
 export const REFINERY_BATCH_CLEAR_SECONDS = 30; // batches clear on a fixed timer, not a fixed rate
 export const OFFLINE_EARNINGS_CAP_MS = 8 * 60 * 60 * 1000; // 8 hours
 
+// Once checkRefinery() flips a batch to 'ready' its gold is already credited to
+// user.availableNuggets, so the entry is pure history from then on. Nothing ever
+// deleted them, which made refineryBatches an append-only, persisted array
+// growing by ~6/minute of play plus one per tap burst — and since the whole array
+// is re-serialized to localStorage on EVERY store write (once a second from the
+// passive tick, plus every tap), the save payload eventually got big enough that
+// the synchronous localStorage write stalled the main thread for hundreds of ms.
+// The UI only ever asks "are there any ready batches" (a badge), so keeping a
+// handful is indistinguishable from keeping thousands.
+const MAX_READY_BATCHES = 12;
+
+/**
+ * Bounds refineryBatches: every in-flight ('processing') batch is kept, but only
+ * the most recent MAX_READY_BATCHES finished ones are retained.
+ */
+function pruneBatches(batches: RefineryBatch[]): RefineryBatch[] {
+  let readyCount = 0;
+  for (const b of batches) if (b.status === 'ready') readyCount++;
+  if (readyCount <= MAX_READY_BATCHES) return batches;
+
+  // Walk backwards so the ones we keep are the newest.
+  let allowance = MAX_READY_BATCHES;
+  const keptReversed: RefineryBatch[] = [];
+  for (let i = batches.length - 1; i >= 0; i--) {
+    const b = batches[i];
+    if (b.status === 'ready') {
+      if (allowance === 0) continue;
+      allowance--;
+    }
+    keptReversed.push(b);
+  }
+  return keptReversed.reverse();
+}
+
 // LOOT TABLE — base value before pickaxe multiplier
 const BASE_PLAIN_VALUE = 1;
 const BASE_GOLD_VALUE = 10;
@@ -739,7 +773,9 @@ export const useGameStore = create<GameState & GameActions>()(
             const newPending = Math.max(0, prev.user.pendingNuggets - nuggetsUnlocked);
 
             return {
-              refineryBatches: updatedBatches,
+              // Pruned here because this is the only place batches become 'ready',
+              // i.e. the only place the array can grow permanently.
+              refineryBatches: pruneBatches(updatedBatches),
               user: {
                 ...prev.user,
                 availableNuggets: newAvailable,
@@ -885,6 +921,18 @@ export const useGameStore = create<GameState & GameActions>()(
       // any component that reads persisted user data (nuggets, mine
       // progress, etc.) on its very first render.
       skipHydration: true,
+      // Existing saves already carry the unbounded batch history that caused the
+      // stalls, so prune on the way in too — otherwise a player who has been
+      // tapping for a while keeps their bloated array (and their freezes) even
+      // after this fix ships.
+      merge: (persisted, current) => {
+        const incoming = (persisted ?? {}) as Partial<GameState>;
+        return {
+          ...current,
+          ...incoming,
+          refineryBatches: pruneBatches(incoming.refineryBatches ?? current.refineryBatches),
+        };
+      },
       partialize: (state) => ({
         user: state.user,
         mining: state.mining,

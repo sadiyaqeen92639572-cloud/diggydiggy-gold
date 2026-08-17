@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useRef, useEffect } from 'react';
+import { useCallback } from 'react';
 import { useGameStore } from '@/store/game-store';
 
 export type SoundType = 'dig' | 'nugget' | 'levelup' | 'purchase' | 'error' | 'coin' | 'streak';
@@ -22,32 +22,38 @@ const SOUND_CONFIG: Record<SoundType, SoundConfig> = {
   streak: { frequency: 880, duration: 0.3, type: 'sine', volume: 0.3 },
 };
 
+// ONE AudioContext for the whole page, module-scoped rather than per-hook.
+// useAudio() is called from 8 different components, and a per-instance ref meant
+// each one could spin up its own context — Chrome caps a page at around 6 before
+// `new AudioContext()` starts throwing, and every extra context carries its own
+// audio thread and hardware buffer for no benefit.
+let sharedAudioContext: AudioContext | null = null;
+
 export function useAudio() {
-  const audioContextRef = useRef<AudioContext | null>(null);
   const soundEnabled = useGameStore((state) => state.soundEnabled);
   const vibrationEnabled = useGameStore((state) => state.vibrationEnabled);
 
   // Lazy initialize AudioContext on user interaction
   const initAudioContext = useCallback(() => {
     if (typeof window === 'undefined') return null;
-    
-    if (!audioContextRef.current) {
+
+    if (!sharedAudioContext) {
       try {
         const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
         if (AudioCtx) {
-          audioContextRef.current = new AudioCtx();
+          sharedAudioContext = new AudioCtx();
         }
       } catch (e) {
         console.warn('Web Audio API not supported in this browser.', e);
       }
     }
-    
+
     // Resume context if suspended (browser security autoplays)
-    if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
-      audioContextRef.current.resume();
+    if (sharedAudioContext && sharedAudioContext.state === 'suspended') {
+      sharedAudioContext.resume();
     }
-    
-    return audioContextRef.current;
+
+    return sharedAudioContext;
   }, []);
 
   // Play synthesized audio using Web Audio API oscillators
@@ -221,14 +227,12 @@ export function useAudio() {
     digVibrate();
   }, [playDigSound, digVibrate]);
 
-  // Cleanup on unmount
-  useEffect(() => {
-    return () => {
-      if (audioContextRef.current) {
-        audioContextRef.current.close().catch(() => {});
-      }
-    };
-  }, []);
+  // Deliberately no unmount teardown: the AudioContext is shared page-wide, so
+  // closing it here would kill audio for the other seven consumers as soon as any
+  // one of them unmounted (e.g. switching tabs unmounts Shop/TrophyCase). The
+  // previous per-instance version closed and recreated a real hardware audio
+  // context on every tab switch, which is expensive. The browser reclaims the
+  // context on page unload.
 
   return {
     playSound,
